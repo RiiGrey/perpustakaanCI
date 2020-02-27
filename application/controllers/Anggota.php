@@ -226,13 +226,56 @@ class Anggota extends CI_Controller {
 			$this->upload->overwrite = true;
 
 			if($this->upload->do_upload('foto')){
+				$data = array(
+					'NoAnggota'=>$this->input->post('noanggota'),
+					'Nama'=>$this->input->post('nama'),
+					'NoInduk'=>$this->input->post('noinduk'),
+					'klas'=>$this->input->post('klas'),
+					'Kelompok'=>$this->input->post('kelompok'),
+					'TempatLahir'=>$this->input->post('tempat'),
+					'Tanggal'=>$this->input->post('tanggal') . ' ' . $this->input->post('bulan') . ' ' . $this->input->post('tahun'),
+					'Kelamin'=>$this->input->post('kelamin'),
+					'Alamat'=>$this->input->post('alamat'),
+					'Masuk'=> date("Y"),
+					'Keterangan'=>$this->input->post('keterangan'),
+					'NamaFoto'=>$this->upload->data('file_name')
+				);
+
+
+				//menyimpan ke dalam database
+				$this->anggotamodel->update($data);
+
+				redirect(base_url() . "anggota/updated");
 				
 			}else{
+				$data = array(
+					'NoAnggota'=>$this->input->post('noanggota'),
+					'Nama'=>$this->input->post('nama'),
+					'NoInduk'=>$this->input->post('noinduk'),
+					'klas'=>$this->input->post('klas'),
+					'Kelompok'=>$this->input->post('kelompok'),
+					'TempatLahir'=>$this->input->post('tempat'),
+					'Tanggal'=>$this->input->post('tanggal') . ' ' . $this->input->post('bulan') . ' ' . $this->input->post('tahun'),
+					'Kelamin'=>$this->input->post('kelamin'),
+					'Alamat'=>$this->input->post('alamat'),
+					'Masuk'=> date("Y"),
+					'Keterangan'=>$this->input->post('keterangan')
+				);
+				print_r($data);
+
+				//menyimpan ke dalam database
+				$this->anggotamodel->update($data);
+
+				redirect(base_url() . "anggota/updated");
 
 			}
 		}else{
 			$this->edit();
 		}
+	}
+
+	public function updated(){
+		$this->index();
 	}
 	
 	public function fetchViewAnggota(){

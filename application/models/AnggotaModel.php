@@ -4,7 +4,7 @@ class AnggotaModel extends CI_Model{
     var $table = 'tbanggota'; //nama tabel dari database
 	var $column_order = array(null, 'NoAnggota', 'Nama','NoInduk','Klas', 'Kelompok'); //field yang ada di table user
 	var $column_search = array('NoAnggota', 'Nama','NoInduk','Klas', 'Kelompok'); //field yang diizin untuk pencarian 
-	var $order = array('Kelompok'=> 'asc', 'Nama' => 'asc'); // default order 
+	var $order = array('Kelompok'=> 'asc', 'NoAnggota' => 'asc'); // default order 
 
 	public function __construct()
 	{
@@ -90,4 +90,9 @@ class AnggotaModel extends CI_Model{
         $this->db->insert("tbanggota", $data);
 
 	}
+	
+    function update($data){
+        $this->db->where("NoAnggota", $data['NoAnggota']);
+        $this->db->update("tbanggota", $data);
+    }
 }

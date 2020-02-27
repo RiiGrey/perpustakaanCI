@@ -121,7 +121,7 @@
 <div class="position-relative form-group">
     <label for="foto" class="">Foto</label>
     <input name="foto" id="foto" type="file" class="form-control-file">
-    <span class="text-danger"><?php echo form_error("klas"); ?><span>
+    <span class="text-danger"><?php if($this->session->flashdata('error')){echo $this->session->flashdata('error');} ?><span>
 </div>
 
 <button class="mt-1 btn btn-primary">Submit</button>

@@ -54,15 +54,9 @@
                             </a>
                         </li>
                         <li>
-                            <a href="elements-buttons-standard.html">
+                            <a href="<?=base_url()?>kategori">
                                 <i class="metismenu-icon"></i>
                                 Data Kategori Buku
-                            </a>
-                        </li>
-                        <li>
-                            <a href="elements-dropdowns.html">
-                                <i class="metismenu-icon">
-                                </i>Data Katalog Buku
                             </a>
                         </li>
                     </ul>
